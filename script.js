@@ -48,8 +48,24 @@ function init() {
  Fetch a Random Meal from TheMealDB
  Returns a Promise that resolves with the meal object
  */
+ 
 function fetchRandomMeal() {
-    // Fill in
+  fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+  .then(response => response.json())
+  .then(data => {
+  const meal = data.meals[0];
+
+    document.getElementById("meal-container").innerHTML =`
+    <p><strong>Navn:</strong> ${meal.strMeal}</p>
+    <p><strong>Navn:</strong> ${meal.strMealThumb}</p>
+    <p><strong>Navn:</strong> ${meal.strInstructions}</p>
+    <p><strong>Navn:</strong> ${meal.strCategory}</p>
+    <p><strong>Navn:</strong> ${meal.strIngredients}</p>
+    <p><strong>Navn:</strong> ${meal.strMeasure}</p>
+    `
+    console.log(data)
+  ;
+  })
 }
 
 /*
